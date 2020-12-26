@@ -31,14 +31,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm install -g serverless
-    - run: npm test
-    - name: Install Serverless Framework
-    - run: npm install -g serverless
-    - name: Serverless AWS Authentication
-    - run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
-    - name: Install dependencies
+    - run: sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - run: npm install
-    - name: Run Tests
     - run: npm test
-    - name: Deploy to stage 
     - run: sls deploy -v -s stage
