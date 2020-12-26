@@ -9,8 +9,6 @@
 name: Test and Deploy to Staging
 
 on:
-  pull_request:
-      branches: [ master ]
   push:
     branches: [ master ]
 
