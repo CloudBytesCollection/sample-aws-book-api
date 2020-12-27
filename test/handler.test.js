@@ -1,4 +1,4 @@
-// // Handler Test
+// Handler Test
 
 // // Imports
 // const handler = require('../handler');
