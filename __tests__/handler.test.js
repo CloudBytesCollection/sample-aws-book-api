@@ -42,7 +42,6 @@ describe('Book API Tests', () => {
                 createBookResponse.response.message
             );
             expect(JSON.parse(response.body).response).toHaveProperty('id');
-
         });
     });
 
