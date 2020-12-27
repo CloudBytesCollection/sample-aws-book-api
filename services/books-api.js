@@ -4,7 +4,6 @@
 const handlerUtil = require('../libs/utils/handler-util');
 const database = require('../db/db-manager');
 const BookModel = require('../db/models/book-model');
-// const AWS = require('aws-sdk');
 
 module.exports.createBook = (entry) => {
     return new Promise((resolve) => {
