@@ -47,9 +47,7 @@ describe('Book API Tests', () => {
 
     it('should update book record', async () => {
         // Mock the db entries
-        mockingoose(Book)
-            .toReturn(createBookRequest, 'save')
-            .toReturn(updateBookRequest, 'findOneAndUpdate');
+        mockingoose(Book).toReturn(updateBookRequest, 'findOneAndUpdate');
 
         // Seed the "pre-existing" book into the db for update operation
         let updatedBook = updateBookRequest;
@@ -76,9 +74,7 @@ describe('Book API Tests', () => {
 
     it('should delete book record', async () => {
         // Mock the db entries
-        mockingoose(Book)
-            .toReturn(createBookRequest, 'save')
-            .toReturn(createBookRequest, 'findOneAndDelete');
+        mockingoose(Book).toReturn(createBookRequest, 'findOneAndDelete');
 
         // Seed the "pre-existing" book into the db for delete operation
         let savedBook = createBookRequest;

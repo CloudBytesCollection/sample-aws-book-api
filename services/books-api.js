@@ -75,7 +75,7 @@ module.exports.getBook = (entry) => {
             bookSearchDetails = { isbn: entry.queryStringParameters.isbn };
         } else {
             resolve(
-                handlerUtil.formatHandlerResponse(404, {
+                handlerUtil.formatHandlerResponse(400, {
                     error: 'Unable to delete without ISBN or ID provided.'
                 })
             );
