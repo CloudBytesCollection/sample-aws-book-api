@@ -40,19 +40,19 @@ module.exports.createBook = (entry) => {
                             })
                         );
                     })
-                    .catch((reason) => {
-                        console.log(reason);
+                    .catch((error) => {
+                      console.error(error, 'An error occurred when attempting to create the book record.')
                         resolve(
                             handlerUtil.formatHandlerResponse(500, {
                                 error:
                                     'Unable to save book. ' +
-                                    JSON.stringify(reason)
+                                    JSON.stringify(error)
                             })
                         );
                     });
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error, 'An error occurred when connecting to the database.');
                 resolve(
                     handlerUtil.formatHandlerResponse(500, { error: error })
                 );
@@ -86,6 +86,7 @@ module.exports.getBook = (entry) => {
             .then(async () => {
                 BookModel.findOne(bookSearchDetails).exec(function (err, book) {
                     if (err) {
+                      console.error(err, 'An error occurred when attempting to find the book record.')
                         resolve(
                             handlerUtil.formatHandlerResponse(400, {
                                 error: 'There was an error finding the book.'
@@ -102,7 +103,7 @@ module.exports.getBook = (entry) => {
                 });
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error, 'An error occurred when connecting to the database.');
                 resolve(
                     handlerUtil.formatHandlerResponse(500, { error: error })
                 );
@@ -169,6 +170,7 @@ module.exports.updateBook = (entry) => {
                         }
                     })
                     .catch((error) => {
+                      console.error(error, 'An error occurred when attempting to update the book record.')
                         resolve(
                             handlerUtil.formatHandlerResponse(500, {
                                 error:
@@ -178,6 +180,7 @@ module.exports.updateBook = (entry) => {
                     });
             })
             .catch((error) => {
+              console.error(error, 'An error occurred when connecting to the database.');
                 resolve(
                     handlerUtil.formatHandlerResponse(500, {
                         error: 'Error connecting to database. ' + error
@@ -223,6 +226,7 @@ module.exports.deleteBook = (entry) => {
                         );
                     })
                     .catch((error) => {
+                      console.error(error, 'An error occurred when attempting to delete the book record.')
                         resolve(
                             handlerUtil.formatHandlerResponse(500, {
                                 error:
@@ -232,7 +236,7 @@ module.exports.deleteBook = (entry) => {
                     });
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error, 'An error occurred when connecting to the database.');
                 resolve(
                     handlerUtil.formatHandlerResponse(500, { error: error })
                 );
