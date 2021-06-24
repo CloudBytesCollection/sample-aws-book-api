@@ -15,4 +15,4 @@ services:
             - mongo
         environment:
             - DB_URL=mongodb://mongo:27017
-            - DB_NAME=appDBName
+            - DB_NAME=bookapi

@@ -1,5 +1,3 @@
-
-
 FROM viratecinteractive/aws-serverless-nodejs
 
 ARG db_url=mongodb://mongo:27017
