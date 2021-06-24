@@ -1,14 +1,13 @@
-FROM node
 
-RUN npm install -g serverless
-RUN npm install -g serverless-offline
 
-ARG db_url="mongodb://mongo:27017"
-ARG db_name="booksapi"
+FROM viratecinteractive/aws-serverless-nodejs
+
+ARG db_url=mongodb://mongo:27017
+ARG db_name=booksapi
 ARG project_dir=/usr/src/app
 
 # Set Environment Variables
-ENV PORT 8000
+ENV PORT=3000
 ENV DB_URL=$db_url
 ENV DB_NAME=$db_name
 
@@ -24,10 +23,8 @@ COPY ./handler.js $project_dir/
 COPY ./package.json $project_dir/
 COPY ./serverless.yml $project_dir/
 
-# WORKDIR $project_dir
-
 # Install Dependencies
 RUN npm install
 
 # Entry Point
-CMD ["sls", "offline"]
+CMD ["sls", "offline", "--noAuth", "--host", "0.0.0.0"]

@@ -57,3 +57,15 @@ Then, to run the app along with a mongo container, run the following:
 ```bash
 docker-compose up
 ```
+
+The base image is the official node image: node 12.22.1-alpine
+
+If you'd like to build your own, its the following definition:
+
+```yaml
+FROM node:12.22.1-alpine3.12
+
+# Install global dependencies
+RUN npm install serverless -g
+RUN npm install serverless-offline -g
+```

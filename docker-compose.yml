@@ -7,10 +7,10 @@ services:
         ports:
             - 27017:27017
     booksapi:
-        image: booksapi
+        image: bookapi
         restart: always
         ports:
-            - 8000:8000
+            - 3000:3000
         links:
             - mongo
         environment:
